@@ -1,0 +1,45 @@
+body::before {
+    content: "";
+    position: fixed;
+    top: -100dvh;
+    left: 0;
+    width: 100dvw;
+    height: 200dvh;
+    pointer-events: none;
+    z-index: 9997;
+    opacity: 0.9;
+
+    background-image:
+        radial-gradient(circle at  8% 12%, #fff 2px, transparent 3px),
+        radial-gradient(circle at 28% 45%, rgba(255,255,255,0.95) 2px, transparent 3px),
+        radial-gradient(circle at 48% 78%, #fff 2px, transparent 3px),
+        radial-gradient(circle at 68% 25%, rgba(255,255,255,0.9) 2px, transparent 3px),
+        radial-gradient(circle at 88% 60%, #fff 2px, transparent 3px),
+        radial-gradient(circle at 40% 90%, rgba(255,255,255,0.85) 2px, transparent 3px);
+
+    background-size:
+        100dvw 100dvh, 100dvw 100dvh, 100dvw 100dvh,
+        100dvw 100dvh, 100dvw 100dvh, 100dvw 100dvh;
+
+    background-repeat: repeat-y;
+
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    contain: strict;
+
+    animation: fall-3 6s linear -2s infinite;
+}
+
+@keyframes fall-3 {
+    0%   { transform: translate3d(0,    0,     0); }
+    20%  { transform: translate3d(6px,  20dvh, 0); }
+    40%  { transform: translate3d(-4px, 40dvh, 0); }
+    60%  { transform: translate3d(5px,  60dvh, 0); }
+    80%  { transform: translate3d(-3px, 80dvh, 0); }
+    100% { transform: translate3d(0,    100dvh, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::before { animation: none; will-change: auto; }
+}
